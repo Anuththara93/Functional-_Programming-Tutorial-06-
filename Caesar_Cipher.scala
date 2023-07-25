@@ -4,11 +4,21 @@ object Caesar_Cipher {
       val plaintext = scala.io.StdIn.readLine("Enter the text -: ")
       val shift = scala.io.StdIn.readLine("Enter the number of shifts -: ").toInt
 
-      val encryptedText = caesarCipher(plaintext, shift, caesarEncrypt)
-      println("Encrypted -: " + encryptedText)
+      println()
+      println("1 - Encrypt the Text")
+      println("2 - Decrypt the Text")
+      println()
+      val choice = scala.io.StdIn.readLine("Enter your choice - ").toInt
 
-      val decryptedText = caesarCipher(encryptedText, shift, caesarDecrypt)
-      println("Decrypted -: " + decryptedText)
+      println(selectChoice(choice, plaintext, shift))
+    }
+
+    def selectChoice(choice: Int, text: String, shift: Int): String = {
+      choice match {
+        case 1 => "Encrypted -: " + caesarCipher(text, shift, caesarEncrypt)
+        case 2 => "Decrypted -: " + caesarCipher(text, shift, caesarDecrypt)
+        case _ => "You made an Invalid choice"
+      }
     }
 
 
